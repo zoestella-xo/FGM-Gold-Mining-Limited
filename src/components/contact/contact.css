@@ -39,6 +39,7 @@
   font-size: clamp(1.0625rem, 1.46vw, 1.3125rem); /* 21px at 1440 */
   line-height: normal;
   color: var(--color-brand-hover);
+  overflow-wrap: anywhere; /* long emails / phone lists wrap instead of overflowing */
 }
 
 /* ───────────────────────── Form ───────────────────────── */
