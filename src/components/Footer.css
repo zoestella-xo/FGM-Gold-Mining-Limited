@@ -10,10 +10,13 @@
   padding-block: 60px 28px;
 }
 
+/* Three proportional columns (≈ 560 / 240 / 336px at the 1440px design width).
+   Fractions instead of fixed widths mean the contact column can never be squeezed out. */
 .site-footer__content {
-  display: flex;
-  align-items: flex-start;
-  gap: 80px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(150px, 0.7fr) minmax(0, 1fr);
+  align-items: start;
+  column-gap: 80px;
 }
 
 .site-footer__identity {
@@ -21,8 +24,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 22px;
-  flex: 0 0 560px;
-  max-width: 100%;
+  min-width: 0;
 }
 
 .site-footer__tagline {
@@ -44,7 +46,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  flex: 0 0 240px;
+  min-width: 0;
 }
 .site-footer__directory ul {
   display: flex;
@@ -72,13 +74,14 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  flex: 1 1 0;
   min-width: 0;
 }
+/* overflow-wrap lets a long email or phone line break instead of pushing the page wider. */
 .site-footer__contact-line {
   font-size: 15px;
   line-height: normal;
   color: var(--color-on-dark);
+  overflow-wrap: anywhere;
 }
 .site-footer__address {
   display: flex;
@@ -87,6 +90,7 @@
   font-size: 14px;
   line-height: 1.6;
   color: var(--color-on-dark-muted);
+  overflow-wrap: anywhere;
 }
 
 .site-footer__legal {
@@ -103,13 +107,8 @@
 /* ---- Responsive ---- */
 @media (max-width: 1100px) {
   .site-footer__content {
-    gap: 48px;
-  }
-  .site-footer__identity {
-    flex-basis: 360px;
-  }
-  .site-footer__directory {
-    flex-basis: 180px;
+    column-gap: 40px;
+    grid-template-columns: minmax(0, 1fr) minmax(130px, 0.6fr) minmax(0, 1.1fr);
   }
 }
 
@@ -117,13 +116,10 @@
   .site-footer__inner {
     padding-block: 48px 24px;
   }
+  /* Stack the three blocks on tablets and phones. */
   .site-footer__content {
-    flex-direction: column;
-    gap: 40px;
-  }
-  .site-footer__identity,
-  .site-footer__directory {
-    flex: none;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 40px;
   }
   .site-footer__tagline {
     font-size: 22px;
