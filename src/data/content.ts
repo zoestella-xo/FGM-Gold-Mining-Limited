@@ -33,7 +33,7 @@ export const COMPANY = {
 export const CONTACT_DETAILS = {
   email: 'smarizini@gmail.com',
   telephone: '+233201749300 / +2335454240',
-  addressLines: ['16 NETFLIX STREET MADINA ESTATE OFF IPS ROAD', 'EAST LEGON, ACCRA, GHANA'],
+  addressLines: ['16 NETFLIX STREET', 'MADINA ESTATE OFF IPS ROAD', 'EAST LEGON', 'ACCRA, GHANA'],
 } as const;
 
 /* ───────────────────────── Home ───────────────────────── */
@@ -54,7 +54,7 @@ export const ABOUT_FOUNDATION = {
     "FGM Gold Mining Limited was incorporated in 2010 to do one thing: build a gold company in [jurisdiction] that doesn't need excuses.",
   facts: [
     { label: 'Incorporated', value: '2010' },
-    { label: 'Headquarters', value: '[city]' },
+    { label: 'Headquarters', value: 'EAST LEGON, ACCRA' },
   ],
 } as const;
 
