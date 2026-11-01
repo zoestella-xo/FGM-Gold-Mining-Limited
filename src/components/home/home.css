@@ -1,0 +1,237 @@
+/* ───────────────────────── Hero ───────────────────────── */
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(520px, 80vw, 616px);
+  padding: calc(var(--header-clearance) + 24px) var(--gutter) 64px;
+  overflow: hidden;
+  background: var(--color-brand);
+  color: #fff;
+}
+
+.hero__backdrop {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Brand-brown tint: heavier at the top (behind the nav + headline), lighter below. */
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--overlay-brand-strong) 0%, var(--overlay-brand-soft) 100%);
+}
+
+.hero__placeholder-label {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--color-on-dark-muted);
+}
+
+.hero__content {
+  position: relative; /* sits above the backdrop */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+  width: 100%;
+  max-width: 1065px;
+  text-align: center;
+}
+
+.hero__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 7.2vw, 5.25rem); /* 84px at 1440 */
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: clamp(-3px, -0.25vw, -1px);
+  color: var(--color-on-dark);
+}
+
+.hero__summary {
+  max-width: 730px;
+  font-size: clamp(1rem, 1.4vw, 1.1875rem); /* 19px at 1440 */
+  line-height: 1.6;
+  color: #fff;
+}
+
+/* ───────────────────────── Company intro ───────────────────────── */
+.company-intro {
+  background: var(--color-surface);
+  padding-block: 40px 32px;
+}
+
+.company-intro--titled {
+  padding-block: 33px 27px;
+}
+
+.company-intro__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3vw, 2.5rem); /* 40px at 1440 */
+  font-weight: 400;
+  line-height: 30px;
+  text-align: center;
+  color: var(--color-brand);
+}
+
+.company-intro__body {
+  max-width: 800px;
+  margin: 27px auto 0;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: justify;
+  color: var(--color-ink-warm);
+}
+
+.company-intro:not(.company-intro--titled) .company-intro__body {
+  margin-top: 49px;
+}
+
+.company-intro__actions {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1154px; /* right edge lands where the design places the button */
+  margin: 8px auto 0;
+}
+
+/* ───────────────────────── Photo strip ───────────────────────── */
+.photo-strip {
+  padding-block: 42px 30px;
+  background: var(--color-surface);
+}
+
+.photo-strip__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+  max-width: 1260px;
+  margin-inline: auto;
+}
+
+.photo-strip__frame {
+  aspect-ratio: 400 / 518;
+}
+
+.photo-strip__actions {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1154px;
+  margin: 25px auto 0;
+}
+
+/* ───────────────────────── Feature grid ───────────────────────── */
+.feature-grid {
+  background: var(--color-surface);
+  padding-bottom: 96px;
+}
+
+.feature-grid__inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px;
+}
+
+.feature--portfolio {
+  gap: 22px;
+  background: var(--color-surface-beige);
+}
+
+.feature--operations {
+  gap: 24px;
+  background: var(--color-brand);
+}
+
+.feature__count {
+  font-family: var(--font-serif);
+  font-size: clamp(4rem, 6.1vw, 5.5rem); /* 88px at 1440 */
+  line-height: 1;
+  color: var(--color-brand-hover);
+}
+
+.feature__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 2.4vw, 2.125rem); /* 34px at 1440 */
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-ink);
+}
+
+.feature__heading--large {
+  font-size: clamp(2rem, 2.8vw, 2.5rem); /* 40px at 1440 */
+  color: var(--color-on-dark);
+}
+
+.feature__description {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+.feature--operations .feature__description {
+  color: var(--color-on-dark-muted);
+}
+
+.feature__sequence {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 2;
+  color: var(--color-on-dark);
+}
+
+/* Push the button to the bottom so both cards align when heights differ. */
+.feature .btn {
+  margin-top: auto;
+}
+
+/* ───────────────────────── Responsive ───────────────────────── */
+@media (max-width: 860px) {
+  .company-intro__body {
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .photo-strip__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .photo-strip__frame {
+    aspect-ratio: 4 / 3;
+  }
+
+  .feature-grid {
+    padding-bottom: 56px;
+  }
+  .feature-grid__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .feature {
+    padding: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .company-intro__actions,
+  .photo-strip__actions {
+    justify-content: flex-start;
+  }
+}

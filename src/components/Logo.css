@@ -1,0 +1,37 @@
+.logo {
+  display: block;
+  object-fit: contain;
+}
+
+.logo--nav {
+  width: 51px;
+  height: 28px;
+}
+
+.logo--footer {
+  width: 147px;
+  height: 82px;
+}
+
+/* Text fallback used until a real logo image is configured. */
+.logo--placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.logo--placeholder.logo--nav {
+  font-size: 24px;
+}
+.logo--placeholder.logo--footer {
+  font-size: 68px;
+}
+.logo--dark.logo--placeholder {
+  color: #000;
+}
+.logo--light.logo--placeholder {
+  color: #fff;
+}

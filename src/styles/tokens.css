@@ -1,0 +1,81 @@
+/**
+ * Design tokens extracted from the Figma file "FGM MINING LIMITED".
+ * Every colour, radius, shadow and font used elsewhere should come from here,
+ * so a rebrand is a one-file change.
+ */
+:root {
+  /* ---- Colour: brand ---------------------------------------------------- */
+  --color-brand: #3e2a18;            /* "Dark Background" variable */
+  --color-brand-hover: #52381f;      /* Lighter brown: hover states + accent text */
+  --color-gold: #ad8a49;             /* Button arrow block, stage numbers */
+  --color-gold-hover: #957539;
+
+  /* ---- Colour: surfaces ------------------------------------------------- */
+  --color-surface: #ffffff;          /* "White Background" variable */
+  --color-surface-beige: #eeeae1;    /* "Beige Background" variable */
+  --color-surface-field: #f8f6f0;    /* Form inputs */
+  --color-surface-placeholder: #e1ded5; /* Empty image slots */
+
+  /* ---- Colour: text ------------------------------------------------------ */
+  --color-ink: #1b211e;              /* Headings on light surfaces */
+  --color-ink-warm: #22180e;         /* Long-form body copy on white */
+  --color-muted: #686c64;            /* Secondary text, labels */
+  --color-on-dark: #f8f6f0;          /* Text on brown */
+  --color-on-dark-muted: #b8bcb1;    /* Secondary text on brown */
+
+  /* ---- Colour: image overlay -------------------------------------------- */
+  /* Brand brown laid over the hero photo. rgba fallback for browsers without color-mix(). */
+  --overlay-brand-strong: rgba(62, 42, 24, 0.82);
+  --overlay-brand-soft: rgba(62, 42, 24, 0.62);
+
+  /* ---- Colour: lines & feedback ----------------------------------------- */
+  --color-border: #cac8bd;
+  --color-border-strong: #1b211e;
+  /* The Figma "white" divider reads as a soft line on brown; tuned to match. */
+  --color-border-on-dark: rgba(255, 255, 255, 0.35);
+  --color-error: #9b2c1f;            /* Not in the Figma file: needed for form validation */
+  --color-success: #3e6b3a;          /* Not in the Figma file: needed for form feedback */
+
+  /* ---- Typography -------------------------------------------------------- */
+  --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --tracking-heading: -1.5px;
+  --tracking-display: -3px;
+  --tracking-label: 1.2px;
+
+  /* ---- Radii -------------------------------------------------------------- */
+  --radius-button: 8px;
+  --radius-pill: 50px;
+  --radius-panel: 24px;
+
+  /* ---- Shadows (the static design has none; these power interactive states) */
+  --shadow-focus: 0 0 0 3px rgba(173, 138, 73, 0.35);
+  --shadow-menu: 0 12px 32px rgba(27, 33, 30, 0.16);
+  --shadow-button-hover: 0 4px 12px rgba(62, 42, 24, 0.25);
+
+  /* ---- Layout -------------------------------------------------------------- */
+  --container-max: 1440px;
+  --gutter: clamp(20px, 5vw, 72px);  /* 72px at the 1440px design width */
+  --header-top: 72px;                /* Gap above the floating nav pill */
+  --header-height: 50px;
+  --header-clearance: calc(var(--header-top) + var(--header-height));
+
+  /* ---- Motion --------------------------------------------------------------- */
+  --transition-fast: 150ms ease;
+}
+
+/* Derive the overlays from --color-brand itself where the browser supports it. */
+@supports (color: color-mix(in srgb, red 50%, transparent)) {
+  :root {
+    --overlay-brand-strong: color-mix(in srgb, var(--color-brand) 82%, transparent);
+    --overlay-brand-soft: color-mix(in srgb, var(--color-brand) 62%, transparent);
+  }
+}
+
+@media (max-width: 860px) {
+  :root {
+    --header-top: 20px;
+  }
+}

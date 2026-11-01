@@ -1,0 +1,166 @@
+/* ───────────────────────── Foundation ───────────────────────── */
+.foundation {
+  padding-top: calc(var(--header-clearance) + 74px);
+  padding-bottom: 56px;
+}
+
+.foundation__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 610px) minmax(0, 638px);
+  justify-content: space-between;
+  align-items: start;
+  column-gap: 48px;
+}
+
+.foundation__text {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-top: 40px;
+}
+
+.foundation__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 2.9vw, 2.625rem); /* 42px at 1440 */
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-ink);
+}
+
+.foundation__description {
+  font-size: clamp(1.25rem, 1.67vw, 1.5rem); /* 24px at 1440 */
+  line-height: 1.65;
+  color: #000;
+}
+
+.foundation__facts {
+  display: flex;
+  gap: 35px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-brand);
+}
+
+.foundation__fact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.foundation__fact-value {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 27px;
+  line-height: normal;
+  color: var(--color-ink);
+}
+
+.foundation__image {
+  aspect-ratio: 638 / 748;
+}
+
+/* ───────────────────────── Beliefs ───────────────────────── */
+.beliefs {
+  background: var(--color-brand);
+  color: var(--color-on-dark);
+}
+
+.beliefs__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding-block: 80px;
+}
+
+/* A 290px empty column mirrors the design's offset section marker. */
+.beliefs__header {
+  display: grid;
+  grid-template-columns: 290px minmax(0, 1fr);
+  column-gap: 100px;
+}
+.beliefs__heading {
+  grid-column: 2;
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 3.75vw, 3.375rem); /* 54px at 1440 */
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-on-dark);
+}
+
+.beliefs__list {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.belief {
+  display: grid;
+  grid-template-columns: 370px minmax(0, 1fr);
+  column-gap: 50px;
+  padding-top: 30px;
+  border-top: 1px solid var(--color-border-on-dark);
+  transition: border-color var(--transition-fast);
+}
+.belief:hover {
+  border-top-color: var(--color-gold);
+}
+
+.belief__principle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 2.1vw, 1.875rem); /* 30px at 1440 */
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-on-dark);
+}
+
+.belief__explanation {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--color-on-dark-muted);
+}
+
+/* ───────────────────────── Responsive ───────────────────────── */
+@media (max-width: 1100px) {
+  .beliefs__header {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .beliefs__heading {
+    grid-column: 1;
+  }
+  .belief {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .foundation {
+    padding-bottom: 40px;
+  }
+  .foundation__inner {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 32px;
+  }
+  .foundation__text {
+    padding-top: 0;
+  }
+  /* Photo sits under the text on small screens. */
+  .foundation__image {
+    aspect-ratio: 4 / 5;
+  }
+
+  .beliefs__inner {
+    gap: 36px;
+    padding-block: 56px;
+  }
+  .beliefs__list {
+    gap: 36px;
+  }
+  .belief {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 12px;
+  }
+}

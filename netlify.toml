@@ -1,0 +1,13 @@
+# Netlify build + routing settings.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# The site is a single-page app: every route (/about, /gallery, ...) is handled by
+# React Router in the browser. This rule serves index.html for all paths so that
+# opening or refreshing a deep link works instead of returning a 404.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

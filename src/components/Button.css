@@ -1,0 +1,84 @@
+/* Two-part button: [ label ][ → ]. Overflow clipping gives the 6/7px inner radii from the design. */
+.btn {
+  display: inline-flex;
+  align-items: stretch;
+  height: 42px; /* 40px content + 1px border either side */
+  padding: 0;
+  border: 1px solid #000;
+  border-radius: var(--radius-button);
+  background: none;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.btn__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 157px;
+  padding-inline: 8px;
+  background: var(--color-brand);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 20px;
+  line-height: 30px;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast);
+}
+
+.btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  background: var(--color-gold);
+  color: #000;
+  transition: background-color var(--transition-fast);
+}
+
+.btn__icon svg {
+  transition: transform var(--transition-fast);
+}
+
+/* ---- Interactive states ---- */
+.btn:hover {
+  box-shadow: var(--shadow-button-hover);
+}
+.btn:hover .btn__label {
+  background: var(--color-brand-hover);
+}
+.btn:hover .btn__icon {
+  background: var(--color-gold-hover);
+}
+.btn:hover .btn__icon svg {
+  transform: translateX(3px);
+}
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+@media (max-width: 480px) {
+  .btn__label {
+    min-width: 0;
+    padding-inline: 16px;
+    font-size: 18px;
+  }
+}

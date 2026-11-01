@@ -1,0 +1,262 @@
+/* ───────────────────────── Licence register ───────────────────────── */
+.licence-register__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  padding-bottom: 88px;
+}
+
+.licence-register__heading-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.licence-register__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 2.64vw, 2.375rem); /* 38px at 1440 */
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-ink);
+}
+
+.register {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: left;
+}
+
+/* Column widths mirror the design's 70 / 330 / 270 / 260 / 270 grid (+24px gaps). */
+.register__col--ref {
+  width: 7.25%;
+}
+.register__col--name {
+  width: 27.3%;
+}
+.register__col--type {
+  width: 22.7%;
+}
+.register__col--jurisdiction {
+  width: 21.9%;
+}
+
+.register thead tr {
+  border-top: 1px solid var(--color-border-strong);
+  border-bottom: 1px solid var(--color-border-strong);
+}
+.register thead th {
+  padding: 18px 24px 18px 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1px;
+  color: var(--color-muted);
+}
+
+.register tbody tr {
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition-fast);
+}
+.register tbody tr:hover {
+  background: rgba(62, 42, 24, 0.05);
+}
+
+.register tbody td,
+.register tbody th {
+  padding: 26px 24px 26px 0;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--color-muted);
+  vertical-align: top;
+}
+
+.register .register__ref {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.register tbody .register__name {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: var(--color-ink);
+  transition: color var(--transition-fast);
+}
+.register tbody tr:hover .register__name {
+  color: var(--color-brand);
+}
+
+/* ───────────────────────── Stage gates ("How We Mine") ───────────────────────── */
+.stage-gates {
+  background: var(--color-brand);
+  color: var(--color-on-dark);
+  scroll-margin-top: 0;
+}
+
+.stage-gates__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  padding-block: 80px;
+}
+
+.stage-gates__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 4.44vw, 4rem); /* 64px at 1440 */
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-on-dark);
+}
+
+.stage-gates__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 64px;
+  row-gap: 18px;
+}
+
+.stage {
+  display: flex;
+  gap: 28px;
+  padding: 28px 0 34px;
+  border-top: 1px solid var(--color-border-on-dark);
+  transition: border-color var(--transition-fast);
+}
+.stage:hover {
+  border-top-color: var(--color-gold);
+}
+
+.stage__number {
+  flex: 0 0 42px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: normal;
+  color: var(--color-gold);
+}
+
+.stage__details {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.stage__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 2.36vw, 2.125rem); /* 34px at 1440 */
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-on-dark);
+}
+
+.stage__description {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-on-dark-muted);
+}
+
+.stage-gates__closure {
+  display: grid;
+  grid-template-columns: 330px minmax(0, 1fr);
+  column-gap: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border-on-dark);
+  font-family: var(--font-serif);
+  font-size: clamp(1.375rem, 2vw, 1.8125rem); /* 29px at 1440 */
+  line-height: normal;
+  color: var(--color-on-dark);
+}
+/* The empty first column mirrors the design's offset "closure label" slot. */
+.stage-gates__closure::before {
+  content: '';
+}
+
+/* ───────────────────────── Responsive ───────────────────────── */
+@media (max-width: 1100px) {
+  .stage-gates__grid {
+    column-gap: 40px;
+  }
+  .stage-gates__closure {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .stage-gates__closure::before {
+    display: none;
+  }
+}
+
+/* Register rows become stacked cards; the header row is visually hidden. */
+@media (max-width: 860px) {
+  .licence-register__inner {
+    padding-bottom: 56px;
+  }
+  .licence-register__heading-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .register,
+  .register tbody {
+    display: block;
+  }
+  .register colgroup {
+    display: none;
+  }
+  .register thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+  .register tbody tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px 24px;
+    padding: 24px 0;
+  }
+  .register tbody td,
+  .register tbody th {
+    display: block;
+    padding: 0;
+  }
+  .register tbody td::before,
+  .register tbody th::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 4px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+  .register tbody .register__ref {
+    grid-column: 1 / -1;
+  }
+  .register tbody .register__name {
+    grid-column: 1 / -1;
+  }
+  .register tbody tr:first-child {
+    border-top: 1px solid var(--color-border-strong);
+  }
+
+  .stage-gates__inner {
+    gap: 32px;
+    padding-block: 56px;
+  }
+  .stage-gates__grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0;
+  }
+  .stage {
+    gap: 20px;
+    padding-bottom: 28px;
+  }
+}

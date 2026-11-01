@@ -1,0 +1,249 @@
+/* ───────────────────────── Layout ───────────────────────── */
+.contact-layout {
+  padding-bottom: 96px;
+}
+
+.contact-layout__inner {
+  display: grid;
+  grid-template-columns: 430px minmax(0, 1fr);
+  column-gap: 80px;
+  align-items: start;
+}
+
+/* ───────────────────────── Contact details ───────────────────────── */
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.contact-details__block {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 28px;
+  border-top: 1px solid var(--color-border);
+}
+
+.contact-details__address {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+  font-family: var(--font-serif);
+  font-size: clamp(1.375rem, 1.94vw, 1.75rem); /* 28px at 1440 */
+  line-height: 1.5;
+  color: var(--color-ink);
+}
+
+.contact-details__line {
+  font-size: clamp(1.0625rem, 1.46vw, 1.3125rem); /* 21px at 1440 */
+  line-height: normal;
+  color: var(--color-brand-hover);
+}
+
+/* ───────────────────────── Form ───────────────────────── */
+.enquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--color-border);
+}
+
+.enquiry-form__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.875rem, 2.7vw, 2.4375rem); /* 39px at 1440 */
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-ink);
+}
+
+.enquiry-form__hint {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+.enquiry-form__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.enquiry-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.enquiry-form__status {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+.enquiry-form__status--success {
+  color: var(--color-success);
+}
+.enquiry-form__status--error {
+  color: var(--color-error);
+}
+
+/* ───────────────────────── Field ───────────────────────── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.field__label {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--color-ink);
+}
+
+.field__control {
+  width: 100%;
+  height: 56px;
+  padding: 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  background: var(--color-surface-field);
+  font-size: 14px;
+  line-height: normal;
+  color: var(--color-ink);
+  appearance: none;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.field__control--multiline {
+  height: 160px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.field__control::placeholder {
+  color: var(--color-muted);
+  opacity: 1;
+}
+
+/* Interactive states */
+.field__control:hover {
+  border-color: var(--color-muted);
+}
+.field__control:focus {
+  outline: none;
+  border-color: var(--color-brand);
+  background: #fff;
+  box-shadow: var(--shadow-focus);
+}
+.field__control:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.field--invalid .field__control {
+  border-color: var(--color-error);
+}
+.field--invalid .field__control:focus {
+  box-shadow: 0 0 0 3px rgba(155, 44, 31, 0.25);
+}
+
+.field__error {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--color-error);
+}
+
+/* ───────────────────────── Consent checkbox ───────────────────────── */
+.consent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.consent__label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+/* Native input hidden visually but still focusable. */
+.consent__input {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.consent__box {
+  display: inline-flex;
+  flex: 0 0 18px;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--color-muted);
+  background: transparent;
+  color: transparent;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.consent__text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.consent__label:hover .consent__box {
+  border-color: var(--color-brand);
+}
+.consent__input:focus-visible + .consent__box {
+  box-shadow: var(--shadow-focus);
+  border-color: var(--color-brand);
+}
+.consent__input:checked + .consent__box {
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+  color: #fff;
+}
+.consent--invalid .consent__box {
+  border-color: var(--color-error);
+}
+
+/* ───────────────────────── Responsive ───────────────────────── */
+@media (max-width: 1100px) {
+  .contact-layout__inner {
+    grid-template-columns: 300px minmax(0, 1fr);
+    column-gap: 48px;
+  }
+}
+
+@media (max-width: 860px) {
+  .contact-layout {
+    padding-bottom: 56px;
+  }
+  .contact-layout__inner {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 40px;
+  }
+}
+
+@media (max-width: 560px) {
+  .enquiry-form__row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

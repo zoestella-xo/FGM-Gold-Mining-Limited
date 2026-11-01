@@ -1,0 +1,219 @@
+/* ───────────────────────── Grid ───────────────────────── */
+.gallery-grid__inner {
+  padding-bottom: 96px;
+}
+
+/* CSS columns = masonry: each photo keeps its own height, columns balance themselves. */
+.gallery-grid__list {
+  column-count: 3;
+  column-gap: 32px;
+}
+
+.gallery-grid__cell {
+  margin-bottom: 32px;
+  break-inside: avoid;
+}
+
+/* ───────────────────────── Tile (one photo) ───────────────────────── */
+.gallery-tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-placeholder); /* shows while the image loads */
+  overflow: hidden;
+  cursor: zoom-in;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.gallery-tile__img {
+  display: block;
+  width: 100%;
+  height: auto; /* with width/height attributes, the browser reserves the right space */
+  transition: transform 400ms ease;
+}
+
+/* Brown wash + enlarge icon on hover / keyboard focus. */
+.gallery-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--overlay-brand-soft);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.gallery-tile__icon {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-brand);
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.gallery-tile:hover .gallery-tile__img {
+  transform: scale(1.04);
+}
+.gallery-tile:hover::after,
+.gallery-tile:focus-visible::after {
+  opacity: 1;
+}
+.gallery-tile:hover .gallery-tile__icon,
+.gallery-tile:focus-visible .gallery-tile__icon {
+  opacity: 1;
+  transform: none;
+}
+.gallery-tile:active .gallery-tile__img {
+  transform: scale(1.02);
+}
+.gallery-tile:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* ───────────────────────── Lightbox ───────────────────────── */
+.lightbox {
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-on-dark);
+}
+.lightbox[open] {
+  display: grid;
+  place-items: center;
+}
+.lightbox::backdrop {
+  background: rgba(27, 16, 8, 0.92);
+}
+
+.lightbox__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: calc(100vw - 32px);
+  pointer-events: none; /* clicks beside the photo fall through to the backdrop-close handler */
+}
+
+.lightbox__image {
+  width: auto;
+  height: auto;
+  max-width: min(100%, 1200px);
+  max-height: calc(100dvh - 120px);
+  object-fit: contain; /* always the whole photo, never cropped */
+  box-shadow: var(--shadow-menu);
+}
+
+.lightbox__caption {
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+  justify-content: center;
+  max-width: 720px;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--color-on-dark-muted);
+}
+
+.lightbox__count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--tracking-label);
+  white-space: nowrap;
+}
+
+.lightbox__btn {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid var(--color-border-on-dark);
+  border-radius: 50%;
+  background: var(--color-brand);
+  color: var(--color-on-dark);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+.lightbox__btn:hover {
+  background: var(--color-gold);
+  color: #000;
+}
+.lightbox__btn:active {
+  transform: scale(0.94);
+}
+.lightbox__btn--close {
+  top: 16px;
+  right: 16px;
+}
+.lightbox__btn--prev {
+  left: 16px;
+  top: 50%;
+  margin-top: -24px;
+}
+.lightbox__btn--next {
+  right: 16px;
+  top: 50%;
+  margin-top: -24px;
+}
+
+/* ───────────────────────── Responsive ───────────────────────── */
+@media (max-width: 1100px) {
+  .gallery-grid__list {
+    column-count: 2;
+    column-gap: 24px;
+  }
+  .gallery-grid__cell {
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 860px) {
+  .gallery-grid__inner {
+    padding-bottom: 56px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid__list {
+    column-gap: 12px;
+  }
+  .gallery-grid__cell {
+    margin-bottom: 12px;
+  }
+  /* Arrows sit below the photo on phones so they never cover it. */
+  .lightbox__btn--prev,
+  .lightbox__btn--next {
+    top: auto;
+    bottom: 16px;
+    margin-top: 0;
+  }
+  .lightbox__image {
+    max-height: calc(100dvh - 190px);
+  }
+}

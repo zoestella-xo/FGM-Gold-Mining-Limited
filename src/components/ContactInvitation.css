@@ -1,0 +1,33 @@
+.contact-invitation {
+  background: var(--color-surface-beige);
+}
+
+.contact-invitation__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding-block: 58px;
+}
+
+.contact-invitation__text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-invitation__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.625rem, 3.2vw, 2.375rem); /* 38px at 1440 */
+  font-weight: 400;
+  line-height: normal;
+  color: var(--color-ink);
+}
+
+@media (max-width: 720px) {
+  .contact-invitation__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-block: 40px;
+  }
+}
