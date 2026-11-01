@@ -28,8 +28,6 @@ export interface ImageAsset {
   readonly focus?: string;
 }
 
-/** An unfilled slot (renders the grey placeholder tile). */
-const slot = (alt: string): ImageAsset => ({ src: '', alt });
 
 /** A filled slot. */
 const photo = (src: string, alt: string, width: number, height: number, focus?: string): ImageAsset => ({
