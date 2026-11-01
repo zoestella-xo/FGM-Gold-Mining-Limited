@@ -5,7 +5,7 @@ Built with React, TypeScript and Vite from the Figma design *FGM MINING LIMITED*
 
 ## Live site
 
-> **🌐 Live website:** `ADD YOUR NETLIFY URL HERE` <!-- e.g. https://fgm-mining.netlify.app -->
+> **🌐 Live website:** fgm-gold-mining-limited.netlify.app
 
 ---
 
