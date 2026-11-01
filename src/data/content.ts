@@ -1,11 +1,3 @@
-/**
- * All site copy lives here so it can be edited (or later fetched from a CMS)
- * without touching component code. Values in [square brackets] are
- * placeholders carried over from the Figma design; replace them with real data.
- */
-
-/* ───────────────────────── Navigation ───────────────────────── */
-
 export interface NavItem {
   readonly label: string;
   readonly to: string;
@@ -39,9 +31,9 @@ export const COMPANY = {
 } as const;
 
 export const CONTACT_DETAILS = {
-  email: '[Email address]',
-  telephone: '[Telephone number]',
-  addressLines: ['[Office address]', '[city], [jurisdiction]'],
+  email: 'smarizini@gmail.com',
+  telephone: '+233201749300 / +2335454240',
+  addressLines: ['16 NETFLIX STREET MADINA ESTATE OFF IPS ROAD', 'EAST LEGON, ACCRA, GHANA'],
 } as const;
 
 /* ───────────────────────── Home ───────────────────────── */
